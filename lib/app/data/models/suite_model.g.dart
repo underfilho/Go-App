@@ -17,6 +17,9 @@ SuiteModel _$SuiteModelFromJson(Map<String, dynamic> json) => SuiteModel(
       categoriaItensModel: (json['categoriaItens'] as List<dynamic>)
           .map((e) => CategoriaItemModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      periodosModel: (json['periodos'] as List<dynamic>)
+          .map((e) => PeriodoModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$SuiteModelToJson(SuiteModel instance) =>
@@ -28,4 +31,5 @@ Map<String, dynamic> _$SuiteModelToJson(SuiteModel instance) =>
       'itens': instance.itensModel.map((e) => e.toJson()).toList(),
       'categoriaItens':
           instance.categoriaItensModel.map((e) => e.toJson()).toList(),
+      'periodos': instance.periodosModel.map((e) => e.toJson()).toList(),
     };

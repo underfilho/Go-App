@@ -5,7 +5,7 @@ part 'periodo_model.g.dart';
 
 @JsonSerializable()
 class PeriodoModel extends Periodo {
-  @JsonKey(fromJson: _descontoFromJson, toJson: null)
+  @JsonKey(name: 'desconto', fromJson: _descontoFromJson)
   final double? descontoModel;
 
   PeriodoModel({

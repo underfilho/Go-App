@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:go_app/app/core/network/rest_client.dart';
+import 'package:go_app/app/core/utils/formatter.dart';
 import 'package:go_app/app/data/datasources/motel_datasource.dart';
 import 'package:go_app/app/data/repositories/motel_repository.dart';
 import 'package:go_app/app/domain/repositories/motel_repository.dart';
@@ -11,6 +12,7 @@ import 'package:go_app/app/ui/theme/app_theme.dart';
 final di = GetIt.instance;
 
 void initDependencies() {
+  di.registerSingleton(CurrencyFormatter());
   di.registerSingleton(RestClient());
 
   di.registerSingleton<MotelDatasource>(MotelDataSourceImpl(di.get()));

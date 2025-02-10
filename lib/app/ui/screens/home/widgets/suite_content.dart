@@ -1,6 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:go_app/app/core/utils/formatter.dart';
+import 'package:go_app/app/dependencies.dart';
+import 'package:go_app/app/domain/entities/periodo.dart';
 import 'package:go_app/app/domain/entities/suite.dart';
 import 'package:go_app/app/ui/theme/app_colors.dart';
 import 'package:go_app/app/ui/theme/app_fonts.dart';
@@ -78,7 +81,98 @@ class SuiteContent extends StatelessWidget {
               ],
             ),
           ),
+          ...suite.periodos.map(
+            (periodo) => Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: _PricingCard(periodo: periodo),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class _PricingCard extends StatelessWidget {
+  final Periodo periodo;
+
+  const _PricingCard({required this.periodo});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppCard(
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 7, horizontal: 20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      periodo.tempoFormatado,
+                      style: AppFonts.of(context)?.title,
+                    ),
+                    const SizedBox(width: 10),
+                    if (periodo.porcentagemDesconto > 0)
+                      _OffDiscount(percentage: periodo.porcentagemDesconto),
+                  ],
+                ),
+                const SizedBox(height: 2),
+                Row(
+                  children: [
+                    if (periodo.porcentagemDesconto > 0)
+                      Text(
+                        di.get<CurrencyFormatter>().format(periodo.valor),
+                        style: AppFonts.of(context)?.title.copyWith(
+                            decoration: TextDecoration.lineThrough,
+                            color: AppColors.of(context)
+                                ?.onBackgroundColor
+                                .withValues(alpha: .6)),
+                      ),
+                    if (periodo.porcentagemDesconto > 0)
+                      const SizedBox(width: 15),
+                    Text(
+                      di.get<CurrencyFormatter>().format(periodo.valorTotal),
+                      style: AppFonts.of(context)?.title,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          const Spacer(),
+          Icon(
+            Icons.chevron_right,
+            size: 32,
+            color: AppColors.of(context)?.fieldColor,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _OffDiscount extends StatelessWidget {
+  final double percentage;
+
+  const _OffDiscount({required this.percentage});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.of(context)!.accentColor, width: 1),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 8),
+      child: Text(
+        '${percentage.toStringAsFixed(0)}% off',
+        style: AppFonts.of(context)?.accentText,
       ),
     );
   }

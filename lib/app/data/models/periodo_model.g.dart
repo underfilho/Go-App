@@ -11,7 +11,7 @@ PeriodoModel _$PeriodoModelFromJson(Map<String, dynamic> json) => PeriodoModel(
       valor: (json['valor'] as num).toDouble(),
       valorTotal: (json['valorTotal'] as num).toDouble(),
       descontoModel:
-          _descontoFromJson(json['descontoModel'] as Map<String, dynamic>?),
+          _descontoFromJson(json['desconto'] as Map<String, dynamic>?),
       temCortesia: json['temCortesia'] as bool,
     );
 
@@ -21,5 +21,5 @@ Map<String, dynamic> _$PeriodoModelToJson(PeriodoModel instance) =>
       'valor': instance.valor,
       'valorTotal': instance.valorTotal,
       'temCortesia': instance.temCortesia,
-      'descontoModel': instance.descontoModel,
+      'desconto': instance.descontoModel,
     };

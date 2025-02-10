@@ -56,10 +56,10 @@ class AppFonts extends ThemeExtension<AppFonts> {
               fontWeight: FontWeight.bold,
               color: appColors.onBackgroundColor),
           accentText: TextStyle(
-              fontSize: 24,
+              fontSize: 10,
               fontFamily: 'Titillium',
               fontWeight: FontWeight.normal,
-              color: appColors.onBackgroundColor),
+              color: appColors.accentColor),
           alertText: TextStyle(
               fontSize: 24,
               fontFamily: 'Titillium',

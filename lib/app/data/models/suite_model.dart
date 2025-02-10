@@ -1,5 +1,6 @@
 import 'package:go_app/app/data/models/categoria_item_model.dart';
 import 'package:go_app/app/data/models/item_model.dart';
+import 'package:go_app/app/data/models/periodo_model.dart';
 import 'package:go_app/app/domain/entities/suite.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -11,6 +12,8 @@ class SuiteModel extends Suite {
   final List<ItemModel> itensModel;
   @JsonKey(name: 'categoriaItens')
   final List<CategoriaItemModel> categoriaItensModel;
+  @JsonKey(name: 'periodos')
+  final List<PeriodoModel> periodosModel;
 
   SuiteModel({
     required super.nome,
@@ -19,7 +22,12 @@ class SuiteModel extends Suite {
     required super.fotos,
     required this.itensModel,
     required this.categoriaItensModel,
-  }) : super(itens: itensModel, categoriaItens: categoriaItensModel);
+    required this.periodosModel,
+  }) : super(
+          itens: itensModel,
+          categoriaItens: categoriaItensModel,
+          periodos: periodosModel,
+        );
 
   factory SuiteModel.fromJson(Map<String, dynamic> json) =>
       _$SuiteModelFromJson(json);
