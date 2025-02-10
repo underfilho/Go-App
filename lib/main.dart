@@ -40,6 +40,7 @@ class MainApp extends StatelessWidget {
             ],
           ),
           onGenerateRoute: router.onGenerateRoute,
+          navigatorKey: router.navigatorKey,
         );
       },
     );
