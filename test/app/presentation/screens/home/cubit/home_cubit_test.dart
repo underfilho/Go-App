@@ -8,6 +8,7 @@ import 'package:go_app/app/ui/screens/home/cubits/home_state.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import '../../../../../mocks/mock_model.dart';
 import 'home_cubit_test.mocks.dart';
 
 @GenerateMocks([BuscarMoteisUseCase])
@@ -25,7 +26,7 @@ void main() {
 
   group('Cenário ideal, deve buscar e carregar a lista de motéis', () {
     void preencherMoteis() {
-      when(buscarMoteis.call()).thenAnswer((_) async => right([]));
+      when(buscarMoteis.call()).thenAnswer((_) async => right(mockMoteis));
     }
 
     test('Estado inicial deve ser initial', () async {
@@ -41,7 +42,7 @@ void main() {
       },
       expect: () => [
         HomeState.loading(),
-        HomeState.done([]),
+        HomeState.done(mockMoteis),
       ],
     );
   });

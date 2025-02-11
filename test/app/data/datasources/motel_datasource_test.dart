@@ -55,9 +55,30 @@ void main() {
           .thenAnswer((_) async => Response('error', statusCode));
     }
 
-    test('Ao receber um erro HTTP deve lançar HTTPException', () async {
-      lancarHttpError(400);
-      expect(datasource.buscarMoteis(), throwsA(isA<HttpException>()));
-    });
+    test(
+      'Ao receber um erro HTTP 400 deve lançar HTTPException com o código',
+      () async {
+        lancarHttpError(400);
+        expect(
+          datasource.buscarMoteis(),
+          throwsA(
+            predicate((e) => e is HttpException && e.message.contains('400')),
+          ),
+        );
+      },
+    );
+
+    test(
+      'Ao receber um erro HTTP 500 deve lançar HTTPException com o código',
+      () async {
+        lancarHttpError(500);
+        expect(
+          datasource.buscarMoteis(),
+          throwsA(
+            predicate((e) => e is HttpException && e.message.contains('500')),
+          ),
+        );
+      },
+    );
   });
 }

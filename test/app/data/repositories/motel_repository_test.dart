@@ -4,13 +4,13 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_app/app/core/errors/failure.dart';
-import 'package:go_app/app/data/models/motel_model.dart';
 import 'package:go_app/app/data/repositories/motel_repository.dart';
 import 'package:go_app/app/domain/repositories/motel_repository.dart';
 import 'package:mockito/annotations.dart';
 import 'package:go_app/app/data/datasources/motel_datasource.dart';
 import 'package:mockito/mockito.dart';
 
+import '../../../mocks/mock_model.dart';
 import 'motel_repository_test.mocks.dart';
 
 @GenerateMocks([MotelDatasource])
@@ -25,8 +25,6 @@ void main() {
   });
 
   group('Cenário ideal, busca de motéis', () {
-    final mockMoteis = <MotelModel>[];
-
     void preencherBuscarMoteis() {
       when(datasource.buscarMoteis()).thenAnswer((_) async => mockMoteis);
     }
