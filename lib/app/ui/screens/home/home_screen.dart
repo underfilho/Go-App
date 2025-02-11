@@ -55,7 +55,7 @@ class _HomePageState extends State<_HomePage> {
                 );
               }
 
-              final moteis = [state.moteis!.first, state.moteis!.first];
+              final moteis = state.moteis!;
 
               return RefreshIndicator(
                 onRefresh: () async => context.read<HomeCubit>().init(),
