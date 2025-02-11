@@ -175,10 +175,10 @@ LF:13
 LH:6
 end_of_record
 SF:lib\app\domain\entities\periodo.dart
-DA:8,0
-DA:10,1
+DA:8,5
+DA:10,2
 LF:2
-LH:1
+LH:2
 end_of_record
 SF:lib\app\domain\entities\suite.dart
 DA:14,1
