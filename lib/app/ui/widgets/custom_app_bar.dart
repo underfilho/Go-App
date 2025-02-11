@@ -6,7 +6,9 @@ import 'package:go_app/app/ui/theme/app_fonts.dart';
 import 'package:go_app/app/ui/widgets/custom_switch.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  final void Function(SwitchOption) onToggle;
+
+  const CustomAppBar({super.key, required this.onToggle});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class CustomAppBar extends StatelessWidget {
                     firstIcon: Icons.access_time_rounded,
                     secondIcon: Icons.calendar_month_outlined,
                     initial: SwitchOption.first,
-                    onToggle: (_) {},
+                    onToggle: onToggle,
                   ),
                 ),
               ),

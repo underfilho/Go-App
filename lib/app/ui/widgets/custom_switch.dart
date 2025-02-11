@@ -45,6 +45,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
           setState(() {
             option = SwitchOption.values.firstWhere((e) => e != option);
           });
+          widget.onToggle(option);
         },
         child: Stack(
           children: [

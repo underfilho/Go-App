@@ -36,12 +36,12 @@ class AppFonts extends ThemeExtension<AppFonts> {
               fontWeight: FontWeight.normal,
               color: appColors.onBackgroundColor),
           bodyTextTitle: TextStyle(
-              fontSize: 24,
+              fontSize: 18,
               fontFamily: 'Titillium',
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.bold,
               color: appColors.onBackgroundColor),
           bodyText: TextStyle(
-              fontSize: 24,
+              fontSize: 14,
               fontFamily: 'Titillium',
               fontWeight: FontWeight.normal,
               color: appColors.onBackgroundColor),

@@ -33,6 +33,8 @@ class _HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<_HomePage> {
+  final controller = WrapperController();
+
   @override
   void initState() {
     super.initState();
@@ -45,8 +47,11 @@ class _HomePageState extends State<_HomePage> {
       backgroundColor: AppColors.of(context)?.primaryColor,
       body: SafeArea(
         child: HomeWrapper(
-          appBar: CustomAppBar(),
-          body: BlocBuilder<HomeCubit, HomeState>(
+          controller: controller,
+          appBar: CustomAppBar(onToggle: (option) {
+            controller.selectScreen!(WrapperScreen.fromSwitchOption(option));
+          }),
+          firstScreen: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               if (state.status == HomeStatus.loading) {
                 return Center(
@@ -79,6 +84,7 @@ class _HomePageState extends State<_HomePage> {
               );
             },
           ),
+          secondScreen: Container(),
         ),
       ),
       floatingActionButton: CustomFAB(onPressed: () {}),

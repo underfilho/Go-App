@@ -5,6 +5,8 @@ import 'package:go_app/app/core/utils/formatter.dart';
 import 'package:go_app/app/dependencies.dart';
 import 'package:go_app/app/domain/entities/periodo.dart';
 import 'package:go_app/app/domain/entities/suite.dart';
+import 'package:go_app/app/ui/routes/myrouter_helper.dart';
+import 'package:go_app/app/ui/screens/suite_items/suite_items_screen.dart';
 import 'package:go_app/app/ui/theme/app_colors.dart';
 import 'package:go_app/app/ui/theme/app_fonts.dart';
 import 'package:go_app/app/ui/widgets/app_card.dart';
@@ -46,7 +48,7 @@ class SuiteContent extends StatelessWidget {
                       Icon(
                         Icons.crisis_alert,
                         color: AppColors.of(context)?.alertColor,
-                        size: 14,
+                        size: 15,
                       ),
                       const SizedBox(width: 5),
                       Text(
@@ -55,7 +57,7 @@ class SuiteContent extends StatelessWidget {
                       )
                     ],
                   ),
-                const SizedBox(height: 10),
+                if (suite.exibirQtdDisponiveis) const SizedBox(height: 10),
               ],
             ),
           ),
@@ -73,26 +75,29 @@ class SuiteContent extends StatelessWidget {
                 }),
                 SizedBox(
                   height: 60,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'ver\ntodos',
-                        textAlign: TextAlign.end,
-                        style: AppFonts.of(context)
-                            ?.label
-                            .copyWith(color: AppColors.of(context)?.fieldColor),
-                      ),
-                      const SizedBox(width: 5),
-                      Transform.rotate(
-                        angle: pi / 2,
-                        child: Icon(
-                          Icons.chevron_right,
-                          size: 18,
-                          color: AppColors.of(context)?.fieldColor,
+                  child: InkWell(
+                    onTap: () =>
+                        context.pushFromBottom(SuiteItemsScreen(suite: suite)),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'ver\ntodos',
+                          textAlign: TextAlign.end,
+                          style: AppFonts.of(context)?.label.copyWith(
+                              color: AppColors.of(context)?.fieldColor),
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 5),
+                        Transform.rotate(
+                          angle: pi / 2,
+                          child: Icon(
+                            Icons.chevron_right,
+                            size: 18,
+                            color: AppColors.of(context)?.fieldColor,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

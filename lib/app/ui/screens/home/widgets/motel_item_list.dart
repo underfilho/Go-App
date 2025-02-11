@@ -35,14 +35,7 @@ class MotelItemList extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              Padding(
-                padding: EdgeInsets.only(top: 5),
-                child: Icon(
-                  Icons.favorite,
-                  size: 30,
-                  color: AppColors.of(context)?.fieldColor,
-                ),
-              )
+              Padding(padding: EdgeInsets.only(top: 5), child: _LikeHeart()),
             ],
           ),
         ),
@@ -101,6 +94,29 @@ class _Rating extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _LikeHeart extends StatefulWidget {
+  const _LikeHeart();
+
+  @override
+  State<_LikeHeart> createState() => __LikeHeartState();
+}
+
+class __LikeHeartState extends State<_LikeHeart> {
+  bool liked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => setState(() => liked = !liked),
+      child: Icon(
+        Icons.favorite,
+        size: 30,
+        color: !liked ? AppColors.of(context)?.fieldColor : Colors.red,
+      ),
     );
   }
 }
