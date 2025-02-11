@@ -39,6 +39,23 @@ class SuiteContent extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
+                if (suite.exibirQtdDisponiveis)
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.crisis_alert,
+                        color: AppColors.of(context)?.alertColor,
+                        size: 14,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        'só mais ${suite.qtd} pelo app',
+                        style: AppFonts.of(context)?.alertText,
+                      )
+                    ],
+                  ),
+                const SizedBox(height: 10),
               ],
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app/app/dependencies.dart';
+import 'package:go_app/app/ui/theme/app_fonts.dart';
 import 'package:go_app/app/ui/widgets/custom_fab.dart';
 import 'package:go_app/app/ui/screens/home/widgets/home_wrapper.dart';
 import 'package:go_app/app/ui/screens/home/widgets/motel_item_list.dart';
@@ -55,6 +56,10 @@ class _HomePageState extends State<_HomePage> {
                 );
               }
 
+              if (state.status == HomeStatus.loading) {
+                return _FailedLoadingWidget();
+              }
+
               final moteis = state.moteis!;
 
               return RefreshIndicator(
@@ -78,6 +83,24 @@ class _HomePageState extends State<_HomePage> {
       ),
       floatingActionButton: CustomFAB(onPressed: () {}),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+}
+
+class _FailedLoadingWidget extends StatelessWidget {
+  const _FailedLoadingWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 30),
+        child: Text(
+          'Ocorreu um erro ao carregar os dados.',
+          style: AppFonts.of(context)?.title,
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }
