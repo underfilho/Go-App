@@ -61,7 +61,7 @@ class _HomePageState extends State<_HomePage> {
                 );
               }
 
-              if (state.status == HomeStatus.loading) {
+              if (state.status == HomeStatus.failed) {
                 return _FailedLoadingWidget();
               }
 
