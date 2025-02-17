@@ -1,6 +1,8 @@
+Vídeo do app em execução pode ser visto [aqui](https://imgur.com/q5cAFTt).
+
 # Go App - Guia de Motéis
 
-Aplicativo Flutter replicando tela de listagem [Guia de Motéis go](https://play.google.com/store/apps/details?id=br.com.guiademoteis.go.android&hl=pt). Projeto construído utilizando conceitos de Clean Architecture, SOLID e Testes unitários. Vídeo do app por ser visto [aqui](/go_app.mp4).
+Aplicativo Flutter replicando tela de listagem [Guia de Motéis go](https://play.google.com/store/apps/details?id=br.com.guiademoteis.go.android&hl=pt). Projeto construído utilizando conceitos de Clean Architecture, SOLID e Testes unitários.
 
 Para requisições http foi utilizado o package [http](https://pub.dev/packages/http), para gerenciamento de estado o [BLoC/Cubit](https://pub.dev/packages/flutter_bloc) e para injeção de dependência o [get_it](https://pub.dev/packages/get_it), além do [json_serializable](https://pub.dev/packages/json_serializable) para facilitar o processo de conversão json.
 
